@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mission to Mars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    crossorigin="anonymous">
+   
+
+</head>
+
+<body class="text-black" style="background-color:white;">
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron text-center" style="background-image: url('https://imgix.bustle.com/uploads/shutterstock/2019/7/19/3931f878-cd90-4172-b573-8399fdc6b5ba-shutterstock-1041249343.jpg?w=970&h=546&fit=crop&crop=faces&auto=format&q=70');" >
+            <h1 class="display-1 text-white"><strong> Mission to Mars </strong> </h1>
+            <a class="btn btn-lg text-black" style="background-color:aqua;" href="/scrape" role="button">Scrape New
+                Data</a>
+        </div>
+
+        <!-- News Section -->
+        <div class="container">
+            <h3>Latest Mars News</h3>
+            <h6>{{ mars_data.Mars_News_Title }}</h6>
+            <p>{{ mars_data.Mars_News_Paragraph }}</p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <!-- Left Image-->
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <h3>Featured Mars Image</h3>
+                    <img src="{{ mars_data.Mars_Featured_Image }}" style="max-width:100%; max-height: auto;" alt="Mars Featured Image">
+                </div>
+
+                <!-- Weather Card -->
+                <div class="col-lg-4 col-md-4 col-sm-12">
+
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body text-white bg-dark">
+                            <h6 class="card-title">Current Weather on Mars</h6>
+                            <p class="card-text">{{ mars_data.Mars_Weather_Data }}</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Table -->
+                    <br>
+                    <h3>Mars Facts</h3>
+                    <div style="max-width: 450px; max-height: 150px; font-size: 15px; margin-bottom: 65px;">
+                        {{ mars_data.Mars_Facts|safe}}
+                    </div>
+                </div> <!-- col4 -->
+            </div><!-- Row -->
+        </div><!-- Container -->
+
+        <!-- Cards -->
+        <h3 style="padding-top: 50px; margin-top: 100px; text-align: center;">Mars Hemispheres</h3>
+        <div class="card-deck">
+            <hr>
+            <div class="col-md-12">
+                <div class="row">
+                    {% for item in mars_data.Mars_Hemisphere_Images %}
+                    <div class="col-md-6">
+                        <div class="card text-white bg-dark" style="margin: 30px;">
+                            <img class="card-img-top" src="{{ item.img_url }}" />
+                            <div class="card-body">
+                                <p class="card-text">{{ item.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div><!-- Close main container -->
+
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
